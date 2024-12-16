@@ -44,11 +44,16 @@ dnf install nodejs -y &>> $LOG_FILE
 
 validate $? "install  node js"
 
-useradd roboshop &>> $LOG_FILE 
+id roboshop
+if [ $? -ne 0 ]
+then
+    useradd roboshop &>> $LOG_FILE 
+    validate $? "user added roboshop"
+else
+     echo -e "$Y already exists $N"
+fi
 
-validate $? "creating roboshop user"
-
-mkdir /app &>> $LOG_FILE 
+mkdir -p /app &>> $LOG_FILE 
 
 validate $? "app directory creating"
 
@@ -60,7 +65,7 @@ cd /app &>> $LOG_FILE
 
 validate $? "change to app directory"
 
-unzip /tmp/catalogue.zip &>> $LOG_FILE 
+unzip -o /tmp/catalogue.zip &>> $LOG_FILE 
 
 validate $? "unzip catalogue"
 
@@ -72,7 +77,7 @@ npm install  &>> $LOG_FILE
 
 validate $? "install dependencies"
 
-cp /home/centos/SHELL-SCRIPT/roboshop-shell/catalogue.service  /etc/systemd/system/catalogue.service &>> $LOG_FILE #give absolute path where cataogue service is there
+cp C:/Users/pnvpr/Devops/Shell-Script/roboshop-shell/catalogue.service  /etc/systemd/system/catalogue.service &>> $LOG_FILE #give absolute path where cataogue service is there
 
 validate $? "copied successfully"
 
@@ -89,7 +94,7 @@ systemctl start catalogue &>> $LOG_FILE
 
 validate $? "start cataogue"
 
-cp /home/centos/SHELL-SCRIPT/roboshop-shell/mongodb.repo  /etc/yum.repos.d/mongo.repo &>> $LOG_FILE 
+cp C:/Users/pnvpr/Devops/Shell-Script/roboshop-shell/catalogue.service/mongodb.repo  /etc/yum.repos.d/mongo.repo &>> $LOG_FILE 
 
 validate $? "mongo db daata done "
 
