@@ -16,10 +16,10 @@ echo "Script is executing at $TIMESTAMP" &>> $LOG_FILE
 validate(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 $R installation got failed $N"
+        echo -e "$2 .....$R  failed $N"
         exit 1
     else
-        echo -e "$2 $G installation is successfull $N"
+        echo -e "$2 ..... $G  success $N"
     fi
 
 }
