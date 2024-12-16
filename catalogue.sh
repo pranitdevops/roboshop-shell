@@ -77,7 +77,7 @@ npm install  &>> $LOG_FILE
 
 validate $? "install dependencies"
 
-cp C:/Users/pnvpr/Devops/Shell-Script/roboshop-shell/catalogue.service  /etc/systemd/system/catalogue.service &>> $LOG_FILE #give absolute path where cataogue service is there
+cp /home/centos/roboshop-shell/catalogue.service  /etc/systemd/system/catalogue.service &>> $LOG_FILE #give absolute path where cataogue service is there
 
 validate $? "copied successfully"
 
@@ -94,7 +94,7 @@ systemctl start catalogue &>> $LOG_FILE
 
 validate $? "start cataogue"
 
-cp C:/Users/pnvpr/Devops/Shell-Script/roboshop-shell/catalogue.service/mongodb.repo  /etc/yum.repos.d/mongo.repo &>> $LOG_FILE 
+cp /home/centos/roboshop-shell/mongodb.repo  /etc/yum.repos.d/mongo.repo &>> $LOG_FILE 
 
 validate $? "mongo db daata done "
 
