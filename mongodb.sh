@@ -46,7 +46,18 @@ validate $? "enabled mongodb successfuly"
 
 systemctl start mongod &>> $LOG_FILE
 
-validate $? "enabled mongodb successfuly" 
+validate $? "start mongodb successfuly" 
+
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>> $LOG_FILE
+
+validate $? "SED changes are done"
+
+systemctl restart mongod &>> $LOG_FILE
+
+validate $? "Restart mongodb is"
+
+
+
 
 
 
